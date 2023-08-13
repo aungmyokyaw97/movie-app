@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::prefix('v1/asd3k23asdfmdsfwefjadfnak3345632cvnwef')->group(function(){
 
-    Route::controller(AuthControlller::class)->group(function(){
+    Route::controller(AuthControlller::class)->middleware('throttle:api-auth')->group(function(){
         Route::post('login','login');
         Route::post('register','register');
     });
@@ -43,6 +43,8 @@ use Illuminate\Support\Facades\Route;
         Route::post('review/create','movieReview');
         Route::post('detail','detail');
         Route::post('list','list');
+        Route::post('export','export')->middleware('throttle:api-download');
+        Route::get('download/export','download')->name('download-csv')->middleware('throttle:api-download');
     });
 
     

@@ -13,6 +13,9 @@ use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\MovieReview;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MoviesExport;
+use App\Http\Requests\API\v1\MovieExportRequest;
 
 class MovieController extends Controller
 {
@@ -96,7 +99,15 @@ class MovieController extends Controller
             $movies->relatedGenres($this->handleGenres($request->genres));
         }
 
-        $data = $movies->withDirector($request)->withTags($request)->paginate(10);
+        if ($request->has('director')) {
+            $movies->relatedDirector($request->director);
+        }
+
+        if ($request->has('tags')) {
+            $movies->relatedTags($request->tags);
+        }
+
+        $data = $movies->paginate(10);
 
         return $this->paginateResponse(data:MovieListResource::collection($data));
     }
@@ -107,6 +118,23 @@ class MovieController extends Controller
         MovieReview::create($request->validated());
 
         return $this->successResponse(message:'Successfully created');
+    }
+
+    public function export(MovieExportRequest $request)
+    {
+
+        $temporaryUrl['temporary_url'] = \URL::temporarySignedRoute(
+            'download-csv', now()->addMinutes(30),
+            $request->toArray()
+        );
+
+        return $this->successResponse(data:$temporaryUrl);
+    }
+
+
+    public function download(Request $request)
+    {   
+        return Excel::download(new MoviesExport($request), 'movies.csv');
     }
 
 
