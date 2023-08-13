@@ -1,0 +1,414 @@
+{
+	"info": {
+		"_postman_id": "e04df56e-fbbd-4ee7-a766-c819839f7bad",
+		"name": "Movie-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3257698",
+		"_collection_link": "https://sfuitcrew.postman.co/workspace/My-Workspace~23720e41-29bf-4a30-86f9-c8a6818c80bf/collection/3257698-e04df56e-fbbd-4ee7-a766-c819839f7bad?action=share&creator=3257698&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\" : \"amk\",\n    \"email\" : \"ezh@gmail.com\",\n    \"password\" : \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\" : \"amk@gmail.com\",\n    \"password\" : \"123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|zezscXVLeZVaNqNYvQdWkwgTcUWVlcwfEKOVKyhJ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\" : \"Spider Man\",\n    \"director\" : \"amk\",\n    \"tags\" : \"advantage\",\n    \"rating\" : 4.5,\n    \"genres\" : [\"animation\",\"cartoon\",\"adv\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/movie/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"movie",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "My Movie List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|zezscXVLeZVaNqNYvQdWkwgTcUWVlcwfEKOVKyhJ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/movie/my/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"movie",
+						"my",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie Edit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|zezscXVLeZVaNqNYvQdWkwgTcUWVlcwfEKOVKyhJ",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 8|KegTN8wKKCrDvTAQFrBvj3cionLjBnfoWqK83gJq",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"movie_id\" : 10,\n    \"title\" : \"Spider Man\",\n    \"director\" : \"amk\",\n    \"tags\" : \"advantage\",\n    \"rating\" : 4.5,\n    \"genres\" : [\"animation\",\"cartoon\",\"advantage\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/movie/edit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"movie",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie Delete",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 8|KegTN8wKKCrDvTAQFrBvj3cionLjBnfoWqK83gJq",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 5|zezscXVLeZVaNqNYvQdWkwgTcUWVlcwfEKOVKyhJ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\" : 11\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/movie/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"movie",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie Review Create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"movie_id\" : 11,\n    \"review\" : \"This is review testing at id 10\",\n    \"email\" : \"am1k@gmail.com\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/movie/review/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"movie",
+						"review",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie List",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"genres\" : [\"Animation\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/movie/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"movie",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie Detail",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"movie_id\" : 11\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/movie/detail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"movie",
+						"detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie Export",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"genres\" : [\"adv\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/movie/export",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"movie",
+						"export"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

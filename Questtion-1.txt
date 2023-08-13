@@ -1,0 +1,24 @@
+Question - 1
+
+Caching can be introduced in any part of a Laravel application. It is most commonly used in Controller and Model.
+- Controllers are responsible for handling requests from the client and returning responses. Caching can be used to cache the results of frequently called controller methods.
+- Models are responsible for handling the database queries. Caching can be used to cache the results of frequently called database queries.
+
+The Cache facade is a convenient way to cache data in Laravel. It can be used to cache data in memory, on disk, or in a remote cache server.
+Memcached and Redis can both be utilized to cache data either in memory or on a remote cache server. 
+
+Advantage
+- Caching can help the API server application run more quickly by minimizing the number of database queries, which in turn reduces the load on database connections.
+- Achieving a fast response time in API calls requires implementing various strategies to optimize the application's performance.
+
+Disadvantage
+- If the cached data is not regularly updated, it might become outdated and inaccurate. 
+- Caching can lead to increased code complexity in our application.
+
+
+Question - 2 
+
+You can download the project for the github.
+
+https://github.com/aungmyokyaw97/movie-app.git
+
