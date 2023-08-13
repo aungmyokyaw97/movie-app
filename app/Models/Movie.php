@@ -32,45 +32,43 @@ class Movie extends Model
 
     public function scopeRelatedGenres($query,$ids)
     {
-        return $query->whereHas('genres', function ($query) use ($ids) {
+        return $query->orWhereHas('genres', function ($query) use ($ids) {
             $query->whereIn('genre_id', $ids);
         });
     }
 
     public function scopeRelatedDirector($query,$name)
     {
-        return $query->where('director', $name);
+        return $query->orWhere('director', $name);
     }
 
     public function scopeRelatedTags($query,$tags)
     {
-        return $query->where('tags', $tags);
+        return $query->orWhere('tags', $tags);
     }
 
     //Related Movie
 
+    //Filter Movie
 
-    // Movie filter
-
-    public function scopeWithDirector($query, $request)
+    public function scopeFilterGenres($query,$ids)
     {
-        if ($request->has('director')) {
-            return $query->where('director', $request->director);
-        }
-
-        return $query;
+        return $query->WhereHas('genres', function ($query) use ($ids) {
+            $query->whereIn('genre_id', $ids);
+        });
     }
 
-    public function scopeWithTags($query, $request)
+    public function scopeFilterDirector($query,$name)
     {
-        if ($request->has('tags')) {
-            return $query->where('director', $request->tags);
-        }
-
-        return $query;
+        return $query->where('director', $name);
     }
 
-    //Movie Filter
+    public function scopeFilterTags($query,$tags)
+    {
+        return $query->where('tags', $tags);
+    }
+
+    //Filter Movie
 
 
     public function user()

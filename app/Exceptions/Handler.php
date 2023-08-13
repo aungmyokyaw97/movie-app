@@ -29,7 +29,7 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        if (\App::environment('production')){
+        // if (\App::environment('production')){
 
             $this->renderable(function (ValidationException $exception, $request) {
                 if ($request->is('api/*')) {
@@ -105,7 +105,7 @@ class Handler extends ExceptionHandler
                 }
             });
 
-        }
+        // }
         
 
         $this->reportable(function (Throwable $e) {

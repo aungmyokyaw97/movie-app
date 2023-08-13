@@ -46,4 +46,9 @@ class User extends Authenticatable
     public function getAuthTokenAttribute(){           
         return 'Bearer '. $this->createToken('application')->plainTextToken;
     }
+
+    public function movies()
+    {
+        return $this->hasMany(Movie::class);
+    }
 }

@@ -83,8 +83,8 @@ class MovieController extends Controller
     {
         $movie = Movie::with(['genres','reviews','user'])->findOrFail($request->movie_id);
         
-        $relatedMovies = Movie::relatedGenres($movie->genres->pluck('id'))->relatedDirector($movie->director)->relatedTags($movie->tags)->select('id','title','director','rating')->inRandomOrder()->limit(5)->get();
-  
+        $relatedMovies = Movie::relatedGenres($movie->genres->pluck('id'))->relatedDirector($movie->director)->relatedTags($movie->tags)->select('id','title','director','tags')->where('id', '<>', $movie->id)->inRandomOrder()->limit(5)->get();
+        
         $movie['related_movie'] = $relatedMovies;
         //return response()->json($movie);
         return $this->successResponse(data:new MovieDetailResource($movie));
@@ -96,15 +96,15 @@ class MovieController extends Controller
         $movies = Movie::with(['genres','user']);
 
         if ($request->has('genres')) {
-            $movies->relatedGenres($this->handleGenres($request->genres));
+            $movies->filterGenres($this->handleGenres($request->genres));
         }
 
         if ($request->has('director')) {
-            $movies->relatedDirector($request->director);
+            $movies->filterDirector($request->director);
         }
 
         if ($request->has('tags')) {
-            $movies->relatedTags($request->tags);
+            $movies->filterTags($request->tags);
         }
 
         $data = $movies->paginate(10);
@@ -120,9 +120,9 @@ class MovieController extends Controller
         return $this->successResponse(message:'Successfully created');
     }
 
+
     public function export(MovieExportRequest $request)
     {
-
         $temporaryUrl['temporary_url'] = \URL::temporarySignedRoute(
             'download-csv', now()->addMinutes(30),
             $request->toArray()

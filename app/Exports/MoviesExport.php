@@ -23,15 +23,15 @@ class MoviesExport implements FromCollection, WithMapping, WithHeadings
         $movies = Movie::with(['genres','user']);
 
         if ($this->request->has('genres')) {
-            $movies->relatedGenres($this->handleGenres($this->request->genres));
+            $movies->filterGenres($this->handleGenres($this->request->genres));
         }
 
         if ($this->request->has('director')) {
-            $movies->relatedDirector($this->request->director);
+            $movies->filterDirector($this->request->director);
         }
 
         if ($this->request->has('tags')) {
-            $movies->relatedTags($this->request->tags);
+            $movies->filterTags($this->request->tags);
         }
 
         $data = $movies->get();
